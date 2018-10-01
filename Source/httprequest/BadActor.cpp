@@ -23,7 +23,8 @@ void ABadActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FString * MyString = new FString[100000];
+	//Uncomment this next line if you want to see a memory leak that will take your computer down fast.
+	//FString * MyString = new FString[100000];
 	
 }
 
