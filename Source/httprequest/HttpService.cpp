@@ -1,4 +1,4 @@
-// Copyright 2018 Colorado Stark
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "HttpService.h"
 
@@ -150,7 +150,7 @@ void AHttpService::Login(FRequest_Login LoginCredentials) {
 	FString ContentJsonString;
 	GetJsonStringFromStruct<FRequest_Login>(LoginCredentials, ContentJsonString);
 
-	TSharedRef<IHttpRequest> Request = PostRequest("user/logi", ContentJsonString);
+	TSharedRef<IHttpRequest> Request = PostRequest("user/login", ContentJsonString);
 	Request->OnProcessRequestComplete().BindUObject(this, &AHttpService::LoginResponse);
 	Send(Request);
 }
@@ -164,7 +164,6 @@ void AHttpService::LoginResponse(FHttpRequestPtr Request, FHttpResponsePtr Respo
 	Response_Login_Cache.id = LoginResponse.id;
 	Response_Login_Cache.name = LoginResponse.name;
 	Response_Login_Cache.hash = LoginResponse.hash;
-	Response_Login_Cache.isChanged = LoginResponse.isChanged;
 
 	UE_LOG(LogTemp, Warning, TEXT("Id is: %d"), LoginResponse.id);
 	UE_LOG(LogTemp, Warning, TEXT("Name is: %s"), *LoginResponse.name);
@@ -186,6 +185,12 @@ void AHttpService::CreateNewPlayerResponse(FHttpRequestPtr Request, FHttpRespons
 
 	FResponse_CreateNewPlayer CreateNewPlayerResponse;
 	GetStructFromJsonString<FResponse_CreateNewPlayer>(Response, CreateNewPlayerResponse);
+
+	///////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
+	// EXERCISE: ADD CODE TO SET Response_CreateNewPlayer_Cache
+	///////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
 
 	UE_LOG(LogTemp, Warning, TEXT("Result of operation to create player was: %s"), *CreateNewPlayerResponse.message);
 	UE_LOG(LogTemp, Warning, TEXT("Your Newly Created Player ID is: %d"), CreateNewPlayerResponse.id);

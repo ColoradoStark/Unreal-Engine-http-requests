@@ -1,5 +1,4 @@
-// Copyright 2018 Colorado Stark
-
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -26,7 +25,6 @@ struct FResponse_Login {
 		UPROPERTY(EditAnywhere, BlueprintReadWrite) int id;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) FString name;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) FString hash;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) bool isChanged;
 
 	FResponse_Login() {}
 };
@@ -131,8 +129,8 @@ class HTTPREQUEST_API AHttpService : public AActor
 //private:
 protected:
 	FHttpModule* Http;
-	//FString ApiBaseUrl = "http://localhost:8080/";
-	FString ApiBaseUrl = "http://52.214.193.147/";
+	FString ApiBaseUrl = "http://localhost:8080/";
+	//FString ApiBaseUrl = "http://52.214.193.147/";
 
 	FString AuthorizationHeader = TEXT("Authorization");
 	void SetAuthorizationHash(FString Hash, TSharedRef<IHttpRequest>& Request);
@@ -160,6 +158,12 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	FResponse_Login Response_Login_Cache;
+
+	///////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
+	// EXERCISE: ADD CODE TO CREATE A Response_CreateNewPlayer_Cache Struct
+	///////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
 
 	UFUNCTION(BlueprintCallable)
 	void Login(FRequest_Login LoginCredentials);
