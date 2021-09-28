@@ -1,0 +1,2 @@
+	UPROPERTY(BlueprintReadWrite)
+	FResponse_GetPlayerInfo Response_GetPlayerInfo_Cache;
