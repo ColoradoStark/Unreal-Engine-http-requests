@@ -11,9 +11,7 @@ void AHttpService::BeginPlay() {
 
 	//Create(PlayerCredentials);
 
-	FRequest_GetPlayerInfo Player;
-	Player.id = 2;
-
-	GetPlayerInfo(Player);
-
+	FRequest_GetPlayerInfo PlayerToGet;
+	PlayerToGet.id = 1;
+	GetPlayerInfo(PlayerToGet);
 }
