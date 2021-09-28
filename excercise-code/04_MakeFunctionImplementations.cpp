@@ -3,13 +3,14 @@ void AHttpService::GetPlayerInfo(FRequest_GetPlayerInfo PlayerID)
 	FString ContentJsonString;
 	GetJsonStringFromStruct<FRequest_GetPlayerInfo>(PlayerID, ContentJsonString);
 
-	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = GetRequest("getplayerinfo/", ContentJsonString);
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = PostRequest("getplayerinfo/", ContentJsonString);
 	Request->OnProcessRequestComplete().BindUObject(this, &AHttpService::GetPlayerInfoResponse);
 	Send(Request);
 
-	UE_LOG(LogTemp, Warning, TEXT("GetPlayerInfo Request Called"));
+	UE_LOG(LogTemp, Warning, TEXT("Create Request Called"));
 
 }
+
 void AHttpService::GetPlayerInfoResponse(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	if (!ResponseIsValid(Response, bWasSuccessful)) return;
